@@ -1,23 +1,12 @@
+
 import { Card, CardContent, } from "@/components/ui/card";
-import vipFallback from "@/assets/img/vip-fallback.png"
-import leftImg from "@/assets/img/tag.png"
 import VipFeaturesSection from "./VipFeaturesSection";
 import icon1 from "@/assets/icons/icon-1.png"
+import { vipImages } from "@/data/vipImages";
 
-const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const VIPCard = ({ vip }) => {
-    // // صورة الخلفية الأساسية
-    // const vipImage = vip.image || vipFallback;
-
-    // // صورة اليسار من المنتج الأول (لو موجود) أو fallback
-    // const leftImage =
-    //     vip.products[0]?.dynamic_image
-    //         ? `${BASE_URL}/public/vip/${vip.products[0].dynamic_image}`
-    //         : vipFallback;
-
-    // // const showProduct = !vipData.length ? staticData : vipData
-
+    const currentImages = vipImages[vip.id] || {}
     return (
         <Card>
             <div className="relative py-20 min-h-[300px] md:min-h-[400px] text-center text-amber-50">
@@ -26,21 +15,24 @@ const VIPCard = ({ vip }) => {
                     sm:w-32 sm:h-32 
                     md:w-40 md:h-40">
                     <img
-                        src={vipFallback}
+                        src={currentImages.main}
                         alt="left"
                         className="object-contain w-full"
+                        loading="lazy"
                     />
                     <h2 className="text-lg font-semibold ">{vip.name}</h2>
                     <p className="mt-2">Duration: {vip.duration} days</p>
                 </div>
                 <img
-                    src={leftImg}
+                    src={currentImages.badge}
                     alt={vip?.name}
+                    loading="lazy"
                     className="
                         absolute 
-                        right-10
-                        top-32 
-                        w-44 h-44          
+                        right-5
+                        top-60 
+                        md:top-40
+                        w-50 h-50          
                         sm:w-60 sm:h-60    
                         md:w-70 md:h-70    
                         object-contain
@@ -48,7 +40,7 @@ const VIPCard = ({ vip }) => {
                 />
             </div>
 
-            <CardContent className="mt-40 md:mt-0 p-6 relative z-10 ">
+            <CardContent className="mt-40 md:mt-0 py-6 relative z-10 ">
                 <h3 className="font-semibold mb-8 text-lg text-primary flex justify-center items-center gap-5">
                     <img src={icon1} alt="icon" className="h-10 w-10" />
                     Exclusive Privilege

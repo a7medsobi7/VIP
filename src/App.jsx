@@ -2,6 +2,8 @@ import { RouterProvider } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import router from "./routes/router.jsx";
+import { getTokenFromQuery } from "./utils/getTokenFromQuery.js";
+import { Toaster } from "react-hot-toast";
 
 export default function App() {
   const { i18n } = useTranslation();
@@ -12,5 +14,20 @@ export default function App() {
     document.dir = i18n.language === "ar" ? "rtl" : "ltr";
   }, [i18n.language]);
 
-  return <RouterProvider router={router} />;
+  useEffect(() => {
+    const token = getTokenFromQuery("token");
+    if (token) {
+      localStorage.setItem("token", token);
+    }
+  }, [])
+
+  return (
+    <>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
+      <RouterProvider router={router} />;
+    </>
+  );
 }

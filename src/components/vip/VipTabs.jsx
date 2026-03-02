@@ -55,7 +55,7 @@ const VIPTabs = () => {
 
         {/* Scrollable Tabs */}
         <div ref={scrollRef} className="overflow-x-auto hide-scrollbar pb-2 flex justify-between items-center">
-          <TabsList className="inline-flex w-max mx-auto py-4 px-6 rounded-xl gap-4 bg-white/10 backdrop-blur-md">
+          <TabsList className="inline-flex w-max mx-auto py-4 px-6 rounded-xl gap-4 bg-white/10 backdrop-blur-md shadow-lg">
             {vipList.map((vip) => (
               <TabsTrigger
                 key={vip.id}

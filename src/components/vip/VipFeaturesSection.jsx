@@ -2,18 +2,17 @@
 import { vipFeatures } from "@/data/vipFeatures";
 import bg from '../../assets/icons/bg.png';
 
-
 const VipFeaturesSection = () => {
     return (
         <section >
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+            <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-4">
                 {vipFeatures.map((feature) => (
                     <div
                         key={feature.id}
                         className="flex flex-col items-center justify-center"
                     >
                         {/* Wrapper */}
-                        <div className="relative w-24 h-24 cursor-pointer transition-all duration-300 hover:scale-105">
+                        <div className="relative w-20 h-20 cursor-pointer transition-all duration-300 hover:scale-105">
 
                             {/* Background Image */}
                             <img
@@ -26,7 +25,7 @@ const VipFeaturesSection = () => {
                             <img
                                 src={feature.icon}
                                 alt={feature.name}
-                                className="absolute inset-0 m-auto w-12 h-12 object-contain"
+                                className="absolute inset-0 m-auto w-11 h-11 object-contain"
                             />
 
                         </div>

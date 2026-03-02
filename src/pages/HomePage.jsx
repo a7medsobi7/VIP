@@ -9,6 +9,8 @@ import Loading from "@/components/loading";
 import { useSelector, useDispatch } from "react-redux";
 import { setVipData } from "@/rtk/features/vipSlice";
 import VIPCard from "@/components/vip/VIPCard";
+import PurchaseStickyCard from "@/components/vip/PurchaseCard";
+import { vipImages } from "@/data/vipImages";
 
 
 function HomePage() {
@@ -16,22 +18,9 @@ function HomePage() {
   const { vipData, activeVipId } = useSelector((state) => state.vip);
   const [loading, setLoading] = useState(true);
 
-  const [bgImage, setBgImage] = useState(bgFallback);
-
   const activeVip = vipData.find((v) => v.id === activeVipId);
 
-  useEffect(() => {
-    const updateBg = async () => {
-      if (activeVip?.image) {
-        const isValid = await checkImage(activeVip.image);
-        setBgImage(isValid ? activeVip.image : bgFallback);
-      } else {
-        setBgImage(bgFallback);
-      }
-    };
-
-    updateBg();
-  }, [activeVip]);
+  const { bg, overlayColor } = (activeVip && vipImages[activeVip.id]) ? vipImages[activeVip.id] : {};
 
   useEffect(() => {
     const fetchVIP = async () => {
@@ -54,28 +43,26 @@ function HomePage() {
   return (
     <div className="relative">
       {/* Overlay */}
-      <div className="fixed inset-0 bg-[rgb(35,21,6)] z-0 pointer-events-none" />
+      <div className="fixed inset-0 z-0 pointer-events-none"
+        style={{ backgroundColor: overlayColor }}
+      />
 
       {/* Hero section */}
       <div className="relative p-6 h-screen">
         {/* Background Image */}
         <div className="absolute inset-0 h-full">
           <img
-            src={bgImage}
+            src={bg}
+            fetchPriority="high"
             alt="hero"
             className="w-full h-full md:object-cover"
           />
           {/* Bottom Brown Blur Effect */}
           <div
-            className="
-            absolute 
-            bottom-0 
-            left-0 
-            w-full 
-            h-40 
-            bg-gradient-to-t 
-           from-[rgb(35,21,6)]/90  to-transparent
-          "
+            className="absolute bottom-0 left-0 w-full h-40"
+            style={{
+              background: `linear-gradient(to top, ${overlayColor} 0%, transparent 100%)`,
+            }}
           />
         </div>
 
@@ -90,7 +77,7 @@ function HomePage() {
         </div>
       </div>
 
-
+      <PurchaseStickyCard activeVip={activeVip} />
     </div>
   );
 }

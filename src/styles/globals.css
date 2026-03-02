@@ -8,6 +8,7 @@
 @theme {
     --color-primary: var(--color-primary);
     --color-primary-light: var(--color-primary-light);
+    --color-overlay: rgb(35, 21, 6);
 }
 
 :root {
