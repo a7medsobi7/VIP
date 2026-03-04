@@ -10,6 +10,7 @@ import {
 import { buyVip, sendVip } from "@/services/vip-service"
 import { useState } from "react"
 import toast from "react-hot-toast"
+import FriendCombobox from "./FriendCombobox"
 
 export default function PurchaseStickyCard({ activeVip }) {
     const [open, setOpen] = useState(false)
@@ -47,6 +48,7 @@ export default function PurchaseStickyCard({ activeVip }) {
                 formData.append("vip_type_id", String(activeVip.id));
 
                 await sendVip(formData);
+                console.log(formData)
                 toast.success("VIP sent successfully 🎁");
             } else {
                 formData.append("duration", String(durationMap[selectedDuration]));
@@ -103,7 +105,7 @@ export default function PurchaseStickyCard({ activeVip }) {
             </div>
 
             {/* Dialog */}
-            <Dialog open={open} onOpenChange={setOpen}>
+            <Dialog open={open} onOpenChange={setOpen} modal={false}>
                 <DialogContent className="w-full max-w-[95%] md:max-w-4xl backdrop-blur-xl shadow-2xl
                     bg-gradient-to-r from-black/20 to-[#8B5A2B]/20 border-white/10">
                     <DialogHeader className="text-white">
@@ -142,13 +144,8 @@ export default function PurchaseStickyCard({ activeVip }) {
                         </div>
                         {actionType === "send" && (
                             <div className="mt-4">
-                                <label className="block text-white mb-1">Receiver ID</label>
-                                <input
-                                    type="text"
-                                    value={receiverId}
-                                    onChange={(e) => setReceiverId(e.target.value)}
-                                    placeholder="Enter receiver ID"
-                                    className="w-full p-3 rounded-lg border border-white/30 bg-white/10 text-white placeholder-white/50"
+                                <FriendCombobox
+                                    setReceiverId={setReceiverId}
                                 />
                             </div>
                         )}

@@ -10,10 +10,10 @@ const VIPCard = ({ vip }) => {
     return (
         <Card>
             <div className="relative py-20 min-h-[300px] md:min-h-[400px] text-center text-amber-50">
-                <div className="absolute left-10 top-10 
-                    w-24 h-24 
-                    sm:w-32 sm:h-32 
-                    md:w-40 md:h-40">
+                <div className="absolute left-10 top-5 
+                    w-20 h-20 
+                    sm:w-25 sm:h-25 
+                    md:w-30 md:h-30">
                     <img
                         src={currentImages.main}
                         alt="left"
@@ -30,17 +30,17 @@ const VIPCard = ({ vip }) => {
                     className="
                         absolute 
                         right-5
-                        top-60 
+                        top-20 
                         md:top-40
-                        w-50 h-50          
-                        sm:w-60 sm:h-60    
-                        md:w-70 md:h-70    
+                        w-40 h-40          
+                        sm:w-50 sm:h-50    
+                        md:w-60 md:h-60    
                         object-contain
                     "
                 />
             </div>
 
-            <CardContent className="mt-40 md:mt-0 py-6 relative z-10 ">
+            <CardContent className="mt-10 lg:mt-40 md:mt-0 py-6 relative z-10 ">
                 <h3 className="font-semibold mb-8 text-lg text-primary flex justify-center items-center gap-5">
                     <img src={icon1} alt="icon" className="h-10 w-10" />
                     Exclusive Privilege

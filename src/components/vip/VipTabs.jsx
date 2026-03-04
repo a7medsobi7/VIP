@@ -25,10 +25,10 @@ const VIPTabs = () => {
   const activeVip = vipList.find((v) => v.id === activeVipId);
   return (
     <Tabs defaultValue={vipList[0]?.name} className="w-full">
-      <div className="relative px-10">
+      <div className="relative ">
 
         {/* Left Arrow – Mobile Only */}
-        <button
+        {/* <button
           onClick={() => scroll("left")}
           className="
           md:hidden
@@ -38,10 +38,10 @@ const VIPTabs = () => {
         "
         >
           <ChevronLeft size={18} />
-        </button>
+        </button> */}
 
         {/* Right Arrow – Mobile Only */}
-        <button
+        {/* <button
           onClick={() => scroll("right")}
           className="
           md:hidden
@@ -51,23 +51,23 @@ const VIPTabs = () => {
         "
         >
           <ChevronRight size={18} />
-        </button>
+        </button> */}
 
         {/* Scrollable Tabs */}
-        <div ref={scrollRef} className="overflow-x-auto hide-scrollbar pb-2 flex justify-between items-center">
-          <TabsList className="inline-flex w-max mx-auto py-4 px-6 rounded-xl gap-4 bg-white/10 backdrop-blur-md shadow-lg">
+        <div ref={scrollRef} className="overflow-x-auto hide-scrollbar pb-2 flex  justify-between items-center">
+          <TabsList className="inline-flex w-max mx-auto py-4 px-4 md:px-6 rounded-xl gap-1 md:gap-2 bg-white/10 backdrop-blur-md shadow-lg">
             {vipList.map((vip) => (
               <TabsTrigger
                 key={vip.id}
                 value={vip.id}
                 className={`
-                whitespace-nowrap px-8 py-4 text-sm sm:text-base font-medium transition-all duration-200
+                whitespace-nowrap px-3 md:px-6 lg:px-8 py-4 text-sm sm:text-base font-medium transition-all duration-200
                 ${activeVipId === vip.id ? "bg-white text-gray-900 shadow-lg" : "text-white/70 hover:text-white hover:bg-white/10"}
                 rounded-lg cursor-pointer
               `}
                 onClick={() => dispatch(setActiveVip(vip.id))}
               >
-                <span className="text-lg sm:text-xl">{vip.name}</span>
+                <span className="text-sm md:text-lg">{vip.name}</span>
               </TabsTrigger>
             ))}
           </TabsList>

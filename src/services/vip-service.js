@@ -18,3 +18,10 @@ export const buyVip = async (formData) => {
     const response = await api.post("/buy-vip", formData);
     return response.data;
 };
+
+// GET FRIENDS
+export const getFriends = async () => {
+    const response = await api.get(`/get-friends/905`);
+    console.log(response.data)
+    return response.data;
+};

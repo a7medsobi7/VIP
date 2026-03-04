@@ -50,7 +50,7 @@ function HomePage() {
       {/* Hero section */}
       <div className="relative p-6 h-screen">
         {/* Background Image */}
-        <div className="absolute inset-0 h-full">
+        <div className="absolute inset-0 h-[60%] lg:h-full">
           <img
             src={bg}
             fetchPriority="high"

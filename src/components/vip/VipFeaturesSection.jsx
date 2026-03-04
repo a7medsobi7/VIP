@@ -12,7 +12,7 @@ const VipFeaturesSection = () => {
                         className="flex flex-col items-center justify-center"
                     >
                         {/* Wrapper */}
-                        <div className="relative w-20 h-20 cursor-pointer transition-all duration-300 hover:scale-105">
+                        <div className="relative w-12 lg:w-20 h-12 lg:h-20 cursor-pointer transition-all duration-300 hover:scale-105">
 
                             {/* Background Image */}
                             <img
@@ -25,7 +25,7 @@ const VipFeaturesSection = () => {
                             <img
                                 src={feature.icon}
                                 alt={feature.name}
-                                className="absolute inset-0 m-auto w-11 h-11 object-contain"
+                                className="absolute inset-0 m-auto w-6 lg:w-12 h-6 lg:h-12 object-contain"
                             />
 
                         </div>
